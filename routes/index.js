@@ -10,6 +10,12 @@ router.get("/breathing",(req,res,next)=>{
   res.render("breathing")
 })
 
+
+router.get("/exercise2",(req,res,next)=>{
+  res.render("sideRaises")
+})
+
+
 router.post("/performance",(req,res,next)=>{
   
   var performance=req.body.performance
