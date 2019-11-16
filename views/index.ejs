@@ -14,22 +14,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dumble shoulder press</title>
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
   </head>
 <style>
 
+#counting{
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  border: 1px solid gray;
+  background-color: yellowgreen;
+  /* color: white; */
+  font-size: 10em;
+  text-align: center;
+}
 
 .sketch-holder{
   
 }
 #defaultCanvas0{
-  height: 22vh !important;
+  /* height: 22vh !important;
     width: auto !important;
     position: relative;
     left: 160vh;
-    top: auto;
+    top: auto; */
 }
 
 
@@ -47,16 +57,31 @@ img{
 }
 </style>
   <body>
-     
-      <h1>Dumble Shoulder Press</h1>
-      <h2 id="counting"> 0 </h2>
-      <div id="sketch-holder">
-        <!-- Our sketch will go here! -->
+      <div class="row pb-5">
+        <div class="col-12 text-center">
+            <h1>Dumble Shoulder Press</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-4 col-sm-12 pl-20">
+          <img class="img-fluid" src="images/dumbellpress.gif" alt="gif">
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12 pl-20 pt-5">
+            <h2 id="counting"> 0 </h2>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12">
+            <div id="sketch-holder">
+              <!-- Our sketch will go here! -->
+            </div>
+        </div>
       </div>
       <!-- <h2 id="accuracy">0 %</h2> -->
 
-    
-  <p id='status'>Loading your trainer...</p>
+<div class="row text-center">
+  <div class="col-12">
+      <p id='status'>Loading your trainer...</p>
+  </div>
+</div>    
    
   <!-- <canvas id="myChart"></canvas> -->
 <!-- 
@@ -72,15 +97,19 @@ img{
 
  </form> -->
  
+<dv class="row justify-content-center">
+  <div class="col-12">
+      <form action="/performance" method="POST">
 
-<form action="/performance" method="POST">
+        <input type="hidden" name="performance" id='id1' />
+          <button id="perf" onclick="gfg_Run()"> 
+            See Your Performance 
+        </button>
+       
+      </form>
+  </div>
+</dv>
 
-  <input type="hidden" name="performance" id='id1' />
-    <button id="perf" onclick="gfg_Run()"> 
-      See Your Performance 
-  </button>
- 
-</form>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="javascripts/sketch.js"></script>
   </body>

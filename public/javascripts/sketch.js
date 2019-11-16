@@ -78,7 +78,7 @@ function drawKeypoints()  {
     if(cycle==5){
 perf.style.display="block"
      
-        select('#counting').html("Congrats! You Made It");
+        select('#status').html("Congrats! You Made It");
             
   
       }
