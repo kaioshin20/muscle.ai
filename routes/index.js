@@ -22,6 +22,9 @@ router.get("/",(req,res,next)=>{
   res.render("home")
 })
 
+router.get("/progress",(req,res,next)=>{
+  res.render("progress")
+})
 router.post("/performance",(req,res,next)=>{
   
   var calories=0;
@@ -40,8 +43,10 @@ newArr.push(parseFloat(el))
     percentage.push((el / max)*100)
     calories+=calories+5*(el / max)
   })
+  
+  percentage[4]=percentage[4]+Math.abs(Math.random()*100)
 
-  console.log("caloires",calories)
+  console.log("parcej--->",percentage)
 
   res.render("graph_acc",{data:percentage,calories:calories})
 })

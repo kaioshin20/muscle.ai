@@ -20,7 +20,7 @@
   </head>
 <style>
 body{
-  background-color: #333;
+  background-color: black;
 }
 
 #myChart{
@@ -39,65 +39,77 @@ p{
 </style>
   <body>
 
-    <!-- Button trigger modal -->
-<button type="button" style="display: none;" id="modalstart" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-      </button>
-      
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="border: 2px solid yellowgreen; border-radius: 5px; color: white;" role="document">
-          <div class="modal-content" style=" background-color: black;">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Calories Burnt</h5>
-              <button style="cursor: pointer; color: white;" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Congrats ! You burnt <%=calories%> Calories 👍
-            </div>
-          </div>
-        </div>
-      </div>
-
-  <p id="data"><%=data[0]%>,<%=data[1]%>,<%=data[2]%>,<%=data[3]%>,<%=data[4]%></p>
-  <div style="width:90%;">
-        <canvas id="canvas"></canvas>
-      </div>
-
-
+        <div style="width:90%;">
+                <canvas id="canvas"></canvas>
+              </div>
 <script>
-    
-window.onload = function(){
-  document.getElementById('modalstart').click();
-}
-
+  
 // var ctx = document.getElementById('myChart').getContext('2d');
-// var Data = document.getElementById("data").innerHTML; 
-// var performance;
-// var newArr=[]
-//   performance=Data.split(",")
-//   console.log("-->",performance)
-//   performance.forEach((el)=>{
-// newArr.push(parseFloat(el))
-//   })
 
-
-// console.log("03030",newArr)
 // var chart = new Chart(ctx, {
 //     // The type of chart we want to create
 //     type: 'line',
   
 //     // The data for our dataset
 //     data: {
-//         labels: ['1', '2', '3', '4', '5'],
+//         labels: ['Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday','Saturday'],
+
+
+//         // datasets: [{
+// 		// 		label: 'Dataset 1',
+// 		// 		backgroundColor: [
+// 		// 			window.chartColors.red,
+// 		// 			window.chartColors.orange,
+// 		// 			window.chartColors.yellow,
+// 		// 			window.chartColors.green,
+// 		// 			window.chartColors.blue,
+// 		// 			window.chartColors.purple,
+// 		// 			window.chartColors.red
+// 		// 		],
+// 		// 		yAxisID: 'y-axis-1',
+// 		// 		data: [
+// 		// 			randomScalingFactor(),
+// 		// 			randomScalingFactor(),
+// 		// 			randomScalingFactor(),
+// 		// 			randomScalingFactor(),
+// 		// 			randomScalingFactor(),
+// 		// 			randomScalingFactor(),
+// 		// 			randomScalingFactor()
+// 		// 		]
+// 		// 	}, {
+// 		// 		label: 'Dataset 2',
+// 		// 		backgroundColor: window.chartColors.grey,
+// 		// 		yAxisID: 'y-axis-2',
+// 		// 		data: [
+// 		// 			randomScalingFactor(),
+// 		// 			randomScalingFactor(),
+// 		// 			randomScalingFactor(),
+// 		// 			randomScalingFactor(),
+// 		// 			randomScalingFactor(),
+// 		// 			randomScalingFactor(),
+// 		// 			randomScalingFactor()
+// 		// 		]
+// 		// 	}],
+
+
+
 //         datasets: [{
 //             label: 'Your Accuracy',
 //             backgroundColor: 'rgb(0, 0, 0)',
 //             borderColor: 'yellowgreen',
-//             data:newArr
+           
+//             data:[1,4,2,5,3,4,3]
+            
+//         }
+//         ,{
+//             label: 'your calories burnt',
+//             backgroundColor: 'rgb(0, 0, 0)',
+//             borderColor: 'red',
+//             data:[1,8,7,6,1,2,5]
 //         }]
+
+
+        
 //     },
   
 //     // Configuration options go here
@@ -114,16 +126,7 @@ window.onload = function(){
 //   }
 //   });
   
-var Data = document.getElementById("data").innerHTML; 
-var performance;
-var newArr=[]
-  performance=Data.split(",")
-  console.log("-->",performance)
-  performance.forEach((el)=>{
-newArr.push(parseFloat(el))
-  })
-
-window.chartColors = {
+   window.chartColors = {
     red: 'rgb(255, 99, 132)',
     orange: 'rgb(255, 159, 64)',
     yellow: 'rgb(255, 205, 86)',
@@ -133,9 +136,14 @@ window.chartColors = {
     grey: 'rgb(231,233,237)'
   };
   
-  var line1 = newArr
- 
-  var MONTHS = ['First','Second','Third','Fourth','Fifth'];
+  var randomScalingFactor = function() {
+    return (Math.random() > 0.5 ? 1.0 : 1.0) * Math.round(Math.random() * 100);
+  };
+  
+  var line1 = [1,4,2,5,3,4]
+  var line2 = [1,8,7,6,1,5]
+  
+  var MONTHS = ['Monday','Tuesday','Wednesday','Thrusday','Friday','Saturday'];
   var config = {
     type: 'line',
     data: {
@@ -146,6 +154,12 @@ window.chartColors = {
         borderColor: window.chartColors.red,
         data: line1,
         fill: false,
+      }, {
+        label: "My Calories Burnt",
+        fill: false,
+        backgroundColor: window.chartColors.blue,
+        borderColor: window.chartColors.blue,
+        data: line2,
       }]
     },
     options: {
@@ -182,17 +196,9 @@ window.chartColors = {
   
   var ctx = document.getElementById("canvas").getContext("2d");
   var myLine = new Chart(ctx, config);
-
-
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 
 </body>
 </html>
