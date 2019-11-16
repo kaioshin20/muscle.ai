@@ -10,6 +10,9 @@ router.get("/breathing",(req,res,next)=>{
   res.render("breathing")
 })
 
+router.get("/menu", (req, res, next)=>{
+  res.render('menu')
+})
 
 router.get("/exercise2",(req,res,next)=>{
   res.render("sideRaises")
