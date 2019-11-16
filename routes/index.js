@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/exercise1', function(req, res, next) {
+  res.render('index');
 });
 
 router.get("/breathing",(req,res,next)=>{
@@ -18,12 +18,13 @@ router.get("/exercise2",(req,res,next)=>{
   res.render("sideRaises")
 })
 
-router.get("/home",(req,res,next)=>{
+router.get("/",(req,res,next)=>{
   res.render("home")
 })
 
 router.post("/performance",(req,res,next)=>{
   
+  var calories=0;
   var performance=req.body.performance
   var newArr=[]
   performance=performance.split(',')
@@ -37,7 +38,11 @@ newArr.push(parseFloat(el))
   var percentage = []
   newArr.forEach((el)=>{
     percentage.push((el / max)*100)
+    calories+=calories+5*(el / max)
   })
-  res.render("graph_acc",{data:percentage})
+
+  console.log("caloires",calories)
+
+  res.render("graph_acc",{data:percentage,calories:calories})
 })
 module.exports = router;
