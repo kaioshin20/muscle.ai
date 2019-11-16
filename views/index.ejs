@@ -1,11 +1,86 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+      <script src= 
+      "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"> 
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+     <script src="https://unpkg.com/ml5@0.3.1/dist/ml5.min.js"></script>
+    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LoopLAB Theme</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
+<style>
+
+
+.sketch-holder{
+  
+}
+#defaultCanvas0{
+  height: 22vh !important;
+    width: auto !important;
+    position: relative;
+    left: 160vh;
+    top: auto;
+}
+
+
+img{
+ z-index: 2;
+}
+#myChart{
+  height: 91vh !important;
+    width: auto !important;
+  /* height:71vh !important;
+  width:auto !important; */
+/*  
+  margin-top:40vh; */
+}
+</style>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+     
+      <h1>Lateral side raise</h1>
+      <h2 id="counting"> 0 </h2>
+      <div id="sketch-holder">
+        <!-- Our sketch will go here! -->
+      </div>
+      <!-- <h2 id="accuracy">0 %</h2> -->
+
+    
+  <p id='status'>Loading your trainer...</p>
+   
+  <canvas id="myChart"></canvas>
+<!-- 
+ <form action="/performance" method="GET" >
+
+  <input type="text" id='id1' />
+  <input type="text"> 
+  <br> 
+  <br> 
+  <button onclick="gfg_Run()"> 
+      See Your Performance 
+  </button> 
+
+ </form> -->
+ 
+
+<form action="/performance" method="POST">
+
+  <input type="hidden" name="performance" id='id1' />
+    <button onclick="gfg_Run()"> 
+      See Your Performance 
+  </button>
+ 
+</form>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="javascripts/sketch.js"></script>
   </body>
 </html>

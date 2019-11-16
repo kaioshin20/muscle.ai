@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src= 
+      "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"> 
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+     <script src="https://unpkg.com/ml5@0.3.1/dist/ml5.min.js"></script>
+    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LoopLAB Theme</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+<style>
+#myChart{
+  height: 91vh !important;
+    width: auto !important;
+  /* height:71vh !important;
+  width:auto !important; */
+/*  
+  margin-top:40vh; */
+}
+
+p{
+    display: none;
+}
+
+</style>
+  <body>
+
+  <p id="data"><%=data[0]%>,<%=data[1]%>,<%=data[2]%>,<%=data[3]%>,<%=data[4]%></p>
+<canvas id="myChart"></canvas>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var Data = document.getElementById("data").innerHTML; 
+var performance;
+var newArr=[]
+  performance=Data.split(",")
+  console.log("-->",performance)
+  performance.forEach((el)=>{
+newArr.push(parseFloat(el))
+  })
+
+
+console.log("03030",newArr)
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+  
+    // The data for our dataset
+    data: {
+        labels: ['1', '2', '3', '4', '5'],
+        datasets: [{
+            label: 'Your Accuracy',
+            backgroundColor: 'rgb(0, 0, 0)',
+            borderColor: 'rgb(255, 255, 255)',
+            data:newArr
+        }]
+    },
+  
+    // Configuration options go here
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+          yAxes: [{
+              ticks: {
+                  beginAtZero:true
+              }
+          }]
+      }
+  }
+  });
+  
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+</body>
+</html>
