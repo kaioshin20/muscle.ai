@@ -5,7 +5,6 @@ let poseNet;
 let poses = [];
 var canvas; 
 let case1=false;
-
 let elbowLeft=0
 let elbowRight=0
 let elbowLeft2=0
@@ -109,7 +108,6 @@ if( poses[0].pose.keypoints[10].position.y<poses[0].pose.keypoints[2].position.y
   case3=true;
   case2=false;
   case1=false;
-
  
 }
 if(poses[0].pose.keypoints[10].position.y < (poses[0].pose.keypoints[6].position.y-35) && case3==true && poses[0].pose.keypoints[9].position.y < (poses[0].pose.keypoints[5].position.y-35) ){
@@ -117,9 +115,8 @@ if(poses[0].pose.keypoints[10].position.y < (poses[0].pose.keypoints[6].position
   case2=false;
   case3=false;
   
-  cycle++;
   
-  
+  cycle++
 }
 
 

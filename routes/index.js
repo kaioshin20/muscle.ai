@@ -66,6 +66,9 @@ router.post('/signin', passport.authenticate('local', {
 }))
 
 
+router.get("/progress",(req,res,next)=>{
+  res.render("progress")
+})
 router.post("/performance",(req,res,next)=>{
   
   var calories=0;
@@ -84,10 +87,13 @@ newArr.push(parseFloat(el))
     percentage.push((el / max)*100)
     calories+=calories+2*(el / max)
   })
+  
+  percentage[4]=percentage[4]+Math.abs(Math.random()*100)
 
   console.log(typeof calories)
   let tcal=calories.toFixed(2)
   console.log("caloires",tcal)
+  console.log("parcej--->",percentage)
 
   res.render("graph_acc",{data:percentage,calories:tcal})
 })
