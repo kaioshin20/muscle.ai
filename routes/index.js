@@ -1,5 +1,28 @@
 var express = require('express');
 var router = express.Router();
+const passport=require('../stratergies')
+
+const session=require('express-session')
+const { connectdb }=require('../database/db')
+
+router.use(session({
+  secret: 'kamehameha',
+  resave: false,
+  saveUninitialized: true,
+}))
+
+router.use(passport.initialize())
+router.use(passport.session())
+
+function checkLogin(req, res, next) {
+  if(req.user) {
+      return next()
+  }
+  else {
+      res.send('<h1>Error 403</h1><h3>Login First!!<h3>')
+  }
+}
+
 
 /* GET home page. */
 router.get('/exercise1', function(req, res, next) {
@@ -10,7 +33,7 @@ router.get("/breathing",(req,res,next)=>{
   res.render("breathing")
 })
 
-router.get("/menu", (req, res, next)=>{
+router.get("/menu", checkLogin, (req, res, next)=>{
   res.render('menu')
 })
 
@@ -21,6 +44,27 @@ router.get("/exercise2",(req,res,next)=>{
 router.get("/",(req,res,next)=>{
   res.render("home")
 })
+
+router.post('/signup', (req, res) => {
+  let nuser = {
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+  }
+  connectdb('hackTIET')
+      .then(db => db.collection('users').insertOne(nuser))
+      .then(() => res.redirect('/'))
+      .catch(err => {
+          console.log(err)
+          res.send(err)
+      })
+})
+
+router.post('/signin', passport.authenticate('local', {
+  successRedirect: '/menu',
+  failureRedirect: '/'
+}))
+
 
 router.post("/performance",(req,res,next)=>{
   
@@ -38,11 +82,13 @@ newArr.push(parseFloat(el))
   var percentage = []
   newArr.forEach((el)=>{
     percentage.push((el / max)*100)
-    calories+=calories+5*(el / max)
+    calories+=calories+2*(el / max)
   })
 
-  console.log("caloires",calories)
+  console.log(typeof calories)
+  let tcal=calories.toFixed(2)
+  console.log("caloires",tcal)
 
-  res.render("graph_acc",{data:percentage,calories:calories})
+  res.render("graph_acc",{data:percentage,calories:tcal})
 })
 module.exports = router;

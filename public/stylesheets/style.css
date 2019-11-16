@@ -8,6 +8,16 @@ body {
   background-size: cover;
 }
 
+.nav-link{
+  border: 2px solid yellowgreen !important;
+  border-radius: 10px;
+}
+
+.nav-link:hover{
+  transform: scale(1.1);
+  opacity: 1;
+}
+
 .navbar {
   border-bottom:yellowgreen 3px solid;
   opacity: 0.8; 
