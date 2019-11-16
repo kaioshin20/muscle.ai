@@ -129,7 +129,7 @@ let distance2=dist(elbowLeft,elbowRight,elbowLeft2,elbowRight2)
 
 
 case1=true;
-if(abs(poses[0].pose.keypoints[6].position.y-poses[0].pose.keypoints[10].position.y)<30&&case1==true && abs(poses[0].pose.keypoints[5].position.y-poses[0].pose.keypoints[9].position.y)<30){
+if(abs(poses[0].pose.keypoints[6].position.y-poses[0].pose.keypoints[10].position.y)<25 &&case1==true && abs(poses[0].pose.keypoints[5].position.y-poses[0].pose.keypoints[9].position.y)<25){
   case2=true;
   case3=false;
   case1=false;
@@ -143,7 +143,7 @@ if( poses[0].pose.keypoints[10].position.y<poses[0].pose.keypoints[2].position.y
 
  
 }
-if(poses[0].pose.keypoints[10].position.y < (poses[0].pose.keypoints[6].position.y-30) && case3==true && poses[0].pose.keypoints[9].position.y < (poses[0].pose.keypoints[5].position.y-30) ){
+if(poses[0].pose.keypoints[10].position.y < (poses[0].pose.keypoints[6].position.y-25) && case3==true && poses[0].pose.keypoints[9].position.y < (poses[0].pose.keypoints[5].position.y-25) ){
   case1=true;
   case2=false;
   case3=false;
