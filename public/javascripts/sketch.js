@@ -19,7 +19,7 @@ let Data=[0,0,0,0,0]
 let case2=false;
 let case3=false;
 let cycle=0;
-//var saved = false;
+
 var ctx = document.getElementById('myChart').getContext('2d');
 
 function setup() {
@@ -27,15 +27,11 @@ canvas =  createCanvas(500, 340);
   video = createCapture(VIDEO);
  video.size(width, height);
  console.log("Wie",width,height)
-//  var x = (windowWidth - width/2) / 2;
-//  var y = (windowHeight - (height+height/2)) / 2;
-//  canvas.position(x, y);
+
  canvas.parent('sketch-holder');
   // Create a new poseNet method with a single detection
   poseNet = ml5.poseNet(video, modelReady);
   
-  // This sets up an event that fills the global variable "poses"
-  // with an array every time new poses are detected
   poseNet.on('pose', function(results) {
     poses = results;
     //console.log("poses",poses)
@@ -81,12 +77,7 @@ function drawKeypoints()  {
 
     if(cycle==4){
 
-      //   Data.forEach((el)=>{
-      //     Accuracy=Accuracy+el
-      //   })
-  
-      // Accuracy=Accuracy/
-        //video.hide();
+     
         select('#counting').html("Congrats! You Made It");
                console.log("data os",Data)
   var chart = new Chart(ctx, {
@@ -122,15 +113,14 @@ function drawKeypoints()  {
   
   
       }
-     // recent=cycle;
+   
       
 if(cycle<5){
   let EFx=poses[0].pose.keypoints[7].position.x
   let EFy=poses[0].pose.keypoints[7].position.y
   let EFx2=poses[0].pose.keypoints[8].position.x
   let EFy2=poses[0].pose.keypoints[8].position.y
- //  console.log("elbow left"+EFx+"--",EFy)
-   //console.log("elbow left"+EFx2+"--",EFy2)    
+   
    elbowLeft=lerp(elbowLeft,EFx,.2)
        elbowRight=lerp(elbowRight,EFy,.2)
        elbowLeft2=lerp(elbowLeft2,EFx2,.2)
