@@ -12,7 +12,7 @@ let elbowLeft2=0
 
 var el_down = document.getElementById("GFG_DOWN"); 
 var inputF = document.getElementById("id1"); 
-
+var perf=document.getElementById("perf");
 var Accuracy=0
 let elbowRight2=0
 let Data=[0,0,0,0,0]
@@ -75,42 +75,11 @@ function drawKeypoints()  {
 
 
 
-    if(cycle==4){
-
+    if(cycle==5){
+perf.style.display="block"
      
         select('#counting').html("Congrats! You Made It");
-               console.log("data os",Data)
-  var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
-  
-    // The data for our dataset
-    data: {
-        labels: ['1', '2', '3', '4', '5'],
-        datasets: [{
-            label: 'Your Accuracy',
-            backgroundColor: 'rgb(0, 0, 0)',
-            borderColor: 'rgb(255, 255, 255)',
-            data: Data 
             
-        }]
-    },
-  
-    // Configuration options go here
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-          yAxes: [{
-              ticks: {
-                  beginAtZero:true
-              }
-          }]
-      }
-  }
-  });
-  
-  
   
       }
    
@@ -129,7 +98,7 @@ let distance2=dist(elbowLeft,elbowRight,elbowLeft2,elbowRight2)
 
 
 case1=true;
-if(abs(poses[0].pose.keypoints[6].position.y-poses[0].pose.keypoints[10].position.y)<25 &&case1==true && abs(poses[0].pose.keypoints[5].position.y-poses[0].pose.keypoints[9].position.y)<25){
+if(abs(poses[0].pose.keypoints[6].position.y-poses[0].pose.keypoints[10].position.y)<35 &&case1==true && abs(poses[0].pose.keypoints[5].position.y-poses[0].pose.keypoints[9].position.y)<35){
   case2=true;
   case3=false;
   case1=false;
@@ -143,7 +112,7 @@ if( poses[0].pose.keypoints[10].position.y<poses[0].pose.keypoints[2].position.y
 
  
 }
-if(poses[0].pose.keypoints[10].position.y < (poses[0].pose.keypoints[6].position.y-25) && case3==true && poses[0].pose.keypoints[9].position.y < (poses[0].pose.keypoints[5].position.y-25) ){
+if(poses[0].pose.keypoints[10].position.y < (poses[0].pose.keypoints[6].position.y-35) && case3==true && poses[0].pose.keypoints[9].position.y < (poses[0].pose.keypoints[5].position.y-35) ){
   case1=true;
   case2=false;
   case3=false;

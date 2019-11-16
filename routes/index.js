@@ -8,16 +8,21 @@ router.get('/', function(req, res, next) {
 
 
 router.post("/performance",(req,res,next)=>{
-  console.log("Sss",req.body)
+  
   var performance=req.body.performance
   var newArr=[]
   performance=performance.split(',')
-  console.log("-->",performance)
+  
   performance.forEach((el)=>{
 newArr.push(parseFloat(el))
   })
-  console.log(newArr,typeof(newArr))
+  
+  var max = newArr.reduce(function(a, b) { return Math.max(a, b); });
 
-  res.render("graph_acc",{data:newArr})
+  var percentage = []
+  newArr.forEach((el)=>{
+    percentage.push((el / max)*100)
+  })
+  res.render("graph_acc",{data:percentage})
 })
 module.exports = router;

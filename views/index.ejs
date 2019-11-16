@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LoopLAB Theme</title>
+    <title>Dumble shoulder press</title>
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
@@ -33,21 +33,22 @@
 }
 
 
+#perf{
+  display: none;
+}
+
 img{
  z-index: 2;
 }
 #myChart{
   height: 91vh !important;
     width: auto !important;
-  /* height:71vh !important;
-  width:auto !important; */
-/*  
-  margin-top:40vh; */
+
 }
 </style>
   <body>
      
-      <h1>Lateral side raise</h1>
+      <h1>Dumble Shoulder Press</h1>
       <h2 id="counting"> 0 </h2>
       <div id="sketch-holder">
         <!-- Our sketch will go here! -->
@@ -57,7 +58,7 @@ img{
     
   <p id='status'>Loading your trainer...</p>
    
-  <canvas id="myChart"></canvas>
+  <!-- <canvas id="myChart"></canvas> -->
 <!-- 
  <form action="/performance" method="GET" >
 
@@ -75,7 +76,7 @@ img{
 <form action="/performance" method="POST">
 
   <input type="hidden" name="performance" id='id1' />
-    <button onclick="gfg_Run()"> 
+    <button id="perf" onclick="gfg_Run()"> 
       See Your Performance 
   </button>
  
