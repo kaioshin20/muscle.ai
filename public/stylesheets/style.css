@@ -1,29 +1,47 @@
 body {
   background: #333;
-  color: #fff; }
+  color: #fff;
+  
+  background: url(https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80);
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .navbar {
-  border-bottom: #008ed6 3px solid;
-  opacity: 0.8; }
+  border-bottom:yellowgreen 3px solid;
+  opacity: 0.8; 
+}
 
 #home-section {
   background: url("../img/home.jpg") no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  min-height: 700px; }
+  min-height: 700px;
+ }
   #home-section .dark-overlay {
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 700px; }
+    /* min-height: 700px; */
+    height: 100vh;
+   }
+   #home-section .fa {
+    color: yellowgreen !important;
+    background: #fff;
+    padding: 4px;
+    border-radius: 5px;
+    font-size: 30px;
+}
   #home-section .home-inner {
-    padding-top: 150px; }
+    padding-top: 150px;
+   }
   #home-section .card-form {
     opacity: 0.8; }
   #home-section .fa {
-    color: #008ed6;
+    color:yellowgreen !important;
     background: #fff;
     padding: 4px;
     border-radius: 5px;
@@ -37,7 +55,7 @@ body {
   font-size: 30px; }
 
 #create-section .fa {
-  color: #008ed6;
+  color: yellowgreen !important;
   background: #fff;
   padding: 4px;
   border-radius: 5px;

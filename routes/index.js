@@ -15,6 +15,9 @@ router.get("/exercise2",(req,res,next)=>{
   res.render("sideRaises")
 })
 
+router.get("/home",(req,res,next)=>{
+  res.render("home")
+})
 
 router.post("/performance",(req,res,next)=>{
   
