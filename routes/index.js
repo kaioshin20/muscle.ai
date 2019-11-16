@@ -6,6 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get("/breathing",(req,res,next)=>{
+  res.render("breathing")
+})
 
 router.post("/performance",(req,res,next)=>{
   
