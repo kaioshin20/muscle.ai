@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb')
-const url = 'mongodb://127.0.0.1/hackTIET';
-// const url = 'mongodb+srv:<user>:<password>@cluster2019-vg1ij.mongodb.net/test?retryWrites=true&w=majority'
+// const url = 'mongodb://127.0.0.1/hackTIET';
+const url = 'mongodb+srv://admin101:I5TVAtAjelgOHVOc@cluster2019-vg1ij.mongodb.net/test?retryWrites=true&w=majority'
 
 const connectdb = (dbname) => {
     return MongoClient.connect(url,{useNewUrlParser:true})
