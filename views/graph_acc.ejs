@@ -20,7 +20,7 @@
   </head>
 <style>
 body{
-  background-color: #333;
+  background-color: black;
 }
 
 #myChart{
@@ -36,8 +36,23 @@ p{
     display: none;
 }
 
+#logout{
+  border-radius: 50%;
+  background-color: rgb(231, 164, 175);
+  color: white;
+  width: max-content;
+  font-size: 3em;
+  padding: 10px;
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+
 </style>
   <body>
+
+    <div id="logout"><a href="/menu"><i class="fa fa-home"></i></a></div>
 
     <!-- Button trigger modal -->
 <button type="button" style="display: none;" id="modalstart" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -47,7 +62,7 @@ p{
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="border: 2px solid yellowgreen; border-radius: 5px; color: white;" role="document">
-          <div class="modal-content" style=" background-color: black;">
+          <div class="modal-content" style=" background-color: #333;">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Calories Burnt</h5>
               <button style="cursor: pointer; color: white;" type="button" class="close" data-dismiss="modal" aria-label="Close">

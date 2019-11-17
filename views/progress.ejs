@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dumble shoulder press</title>
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
   </head>
@@ -36,95 +36,40 @@ p{
     display: none;
 }
 
+#logout{
+  border-radius: 100%;
+  background-color: rgb(231, 164, 175);
+  color: white;
+  width: max-content;
+  font-size: 3em;
+  padding: 5px;
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+
 </style>
   <body>
+
+      <div id="logout"><a href="/menu"><i class="fa fa-arrow-circle-left"></i></a></div>
+
+      <p id="data"><%=data.calories%>,<%=data.accuracy%></p>
 
         <div style="width:90%;">
                 <canvas id="canvas"></canvas>
               </div>
 <script>
-  
-// var ctx = document.getElementById('myChart').getContext('2d');
+var Data = document.getElementById("data").innerHTML; 
+var performance;
+var newArr=[]
+  performance=Data.split(",")
+  console.log("-->",performance)
+  performance.forEach((el)=>{
+newArr.push(parseFloat(el))
+  })
 
-// var chart = new Chart(ctx, {
-//     // The type of chart we want to create
-//     type: 'line',
-  
-//     // The data for our dataset
-//     data: {
-//         labels: ['Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday','Saturday'],
-
-
-//         // datasets: [{
-// 		// 		label: 'Dataset 1',
-// 		// 		backgroundColor: [
-// 		// 			window.chartColors.red,
-// 		// 			window.chartColors.orange,
-// 		// 			window.chartColors.yellow,
-// 		// 			window.chartColors.green,
-// 		// 			window.chartColors.blue,
-// 		// 			window.chartColors.purple,
-// 		// 			window.chartColors.red
-// 		// 		],
-// 		// 		yAxisID: 'y-axis-1',
-// 		// 		data: [
-// 		// 			randomScalingFactor(),
-// 		// 			randomScalingFactor(),
-// 		// 			randomScalingFactor(),
-// 		// 			randomScalingFactor(),
-// 		// 			randomScalingFactor(),
-// 		// 			randomScalingFactor(),
-// 		// 			randomScalingFactor()
-// 		// 		]
-// 		// 	}, {
-// 		// 		label: 'Dataset 2',
-// 		// 		backgroundColor: window.chartColors.grey,
-// 		// 		yAxisID: 'y-axis-2',
-// 		// 		data: [
-// 		// 			randomScalingFactor(),
-// 		// 			randomScalingFactor(),
-// 		// 			randomScalingFactor(),
-// 		// 			randomScalingFactor(),
-// 		// 			randomScalingFactor(),
-// 		// 			randomScalingFactor(),
-// 		// 			randomScalingFactor()
-// 		// 		]
-// 		// 	}],
-
-
-
-//         datasets: [{
-//             label: 'Your Accuracy',
-//             backgroundColor: 'rgb(0, 0, 0)',
-//             borderColor: 'yellowgreen',
-           
-//             data:[1,4,2,5,3,4,3]
-            
-//         }
-//         ,{
-//             label: 'your calories burnt',
-//             backgroundColor: 'rgb(0, 0, 0)',
-//             borderColor: 'red',
-//             data:[1,8,7,6,1,2,5]
-//         }]
-
-
-        
-//     },
-  
-//     // Configuration options go here
-//     options: {
-//       responsive: true,
-//       maintainAspectRatio: false,
-//       scales: {
-//           yAxes: [{
-//               ticks: {
-//                   beginAtZero:true
-//               }
-//           }]
-//       }
-//   }
-//   });
+  console.log("prr",newArr)
   
    window.chartColors = {
     red: 'rgb(255, 99, 132)',
@@ -140,9 +85,11 @@ p{
     return (Math.random() > 0.5 ? 1.0 : 1.0) * Math.round(Math.random() * 100);
   };
   
-  var line1 = [1,4,2,5,3,4]
-  var line2 = [1,8,7,6,1,5]
+  var line1 = [30,92.98,78.25,87.32,65.35]
+  var line2 = [56,78.74,65.99,102.25,79.32]
   
+  line1.push(newArr[1])
+  line2.push(newArr[0])
   var MONTHS = ['Monday','Tuesday','Wednesday','Thrusday','Friday','Saturday'];
   var config = {
     type: 'line',

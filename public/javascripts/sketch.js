@@ -7,6 +7,7 @@ var canvas;
 let case1=false;
 let elbowLeft=0
 let elbowRight=0
+var recent=0
 let elbowLeft2=0
 
 var el_down = document.getElementById("GFG_DOWN"); 
@@ -115,14 +116,16 @@ if(poses[0].pose.keypoints[10].position.y < (poses[0].pose.keypoints[6].position
   case2=false;
   case3=false;
   
-  
-  cycle++
+  cycle++ 
 }
+
 
 
   select('#counting').html(cycle);
 
-Data[cycle-1]=Data[cycle-1]+distance2   
+  Data[cycle-1]=Data[cycle-1]+distance2 
+
+    
 
 
 }

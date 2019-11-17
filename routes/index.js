@@ -23,6 +23,10 @@ function checkLogin(req, res, next) {
   }
 }
 
+router.get('/signout', (req, res) => {
+  req.logout()
+  res.redirect('/')
+})
 
 /* GET home page. */
 router.get('/exercise1', function(req, res, next) {
@@ -49,7 +53,8 @@ router.post('/signup', (req, res) => {
   let nuser = {
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      calories: 0
   }
   connectdb('hackTIET')
       .then(db => db.collection('users').insertOne(nuser))
@@ -67,7 +72,18 @@ router.post('/signin', passport.authenticate('local', {
 
 
 router.get("/progress",(req,res,next)=>{
-  res.render("progress")
+  connectdb('hackTIET')
+  .then(db => db.collection('users').findOne({ username : req.user[0].username}))
+  .then((data) => {
+    console.log("--",data)
+    res.render("progress",{data:data})
+  }
+    )
+  .catch(err => {
+      console.log(err)
+      res.send(err)
+  })
+  
 })
 router.post("/performance",(req,res,next)=>{
   
@@ -94,6 +110,25 @@ newArr.push(parseFloat(el))
   let tcal=calories.toFixed(2)
   console.log("caloires",tcal)
   console.log("parcej--->",percentage)
+
+  let acc=0
+  percentage.forEach((el)=>{
+    acc+=el
+  })
+
+  acc=acc / percentage.length
+  console.log('gffffffffffffffffffffffffffffffffffffffff')
+  console.log(req.user[0].calories)
+  let cc=parseFloat(req.user[0].calories) + parseFloat(tcal);
+  connectdb('hackTIET')
+      .then(db => db.collection('users').updateOne(
+        { username : req.user[0].username}, 
+        { $set: {accuracy: acc, calories: cc}}))
+      .then(() => res.redirect('/'))
+      .catch(err => {
+          console.log(err)
+          res.send(err)
+      })
 
   res.render("graph_acc",{data:percentage,calories:tcal})
 })
